@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<title>FYDT?</title>
+  <!-- Favicon from FYDT folder -->
+  <link rel="icon" href="FYDT/Favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="main-nav" class="nav-top">
+  <!-- Header logo image (replaces text) -->
+  <a class="nav-logo" href="#home">
+    <img src="FYDT/LOGOO.png" alt="FYDT logo" class="nav-logo-img">
+  </a>
+  <button id="nav-toggle" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#about-us">About Us</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="slide slide-1 active">
+    <div class="slide-bg"></div>
+    <div class="slide-content">
+      <span class="slide-label">It's more than just clothes.</span>
+      <h1 class="slide-title">Is it Adventure time?<br>with a wink</h1>
+      <p class="slide-sub">Designed for the Nolstagia </p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn-hero">Browse the Shop</a>
+        <a href="#about" class="btn-secondary">Get ready for the Adventure</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide slide-2">
+    <div class="slide-bg"></div>
+    <div class="slide-content">
+      <span class="slide-label">Exclusive</span>
+      <h1 class="slide-title">Shirts, hoodies,<br>and hats</h1>
+      <p class="slide-sub">Fun silhouettes with unexpected color notes and premium ease.</p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn-hero">Cav the Catalogue</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide slide-3">
+    <div class="slide-bg"></div>
+    <div class="slide-content">
+      <span class="slide-label">Design</span>
+      <h1 class="slide-title">Comfort that<br>feels cool</h1>
+      <p class="slide-sub">Every Design is made to be worn now, again, and shared.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-hero">Stay in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-dots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+  </div>
+</section>
+
+<section class="about-block" id="about">
+  <div class="section-inner split-grid">
+    <div>
+      <p class="section-label">About</p>
+      <h2 class="section-title">A single page, a full story.</h2>
+      <p class="section-copy">FYDT? blends Creative and premium ease with honest texture.</p>
+      <div class="about-list">
+        <div>
+          <strong>Premium mood</strong>
+          <p>Crazy, rich contrasts, and easy wearable pieces.</p>
+        </div>
+        <div>
+          <strong>Accessible edit</strong>
+          <p>Every product is part of the same story  modern, soft, and ready to live in.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-card">
+      <p class="about-card-title">Your wardrobe should be a fun and Colourful</p>
+      <p class="about-card-copy">Tap the item to view details and select your preferred size and color.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-us-block" id="about-us">
+  <div class="section-inner">
+    <p class="section-label">About Us</p>
+    <h2 class="section-title">I design pieces that feel like Nolstagia.</h2>
+    <div class="about-us-grid">
+      <div class="about-us-item">
+        <p class="item-title">Built for starting a conversation</p>
+        <p>Soft finishes and easy fits created for the daily rhythm.</p>
+      </div>
+      <div class="about-us-item">
+        <p class="item-title">Diverse colorways</p>
+        <p>Find grounded neutrals and playful accent colors side by side.</p>
+      </div>
+      <div class="about-us-item">
+        <p class="item-title">Curated selections</p>
+        <p>Four signature styles with placeholders for other colorways, just like a catalogue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Shop</p>
+      <h2 class="section-title">Select your fit</h2>
+    </div>
+    <p class="section-copy">Tap a product card to choose size and color. Each item is shown with a unique visual style and a product name front and center.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card" data-product="Signature Shirt" data-category="Shirt" data-price="R 890" data-description="Light cotton with a neat collar and soft drape." data-sizes="XS,S,M,L,XL" data-colors="Charcoal,Oat,Olive,Cobalt">
+      <div class="product-img product-shirt">
+        <!-- Image for Signature Shirt (from Clothing folder) -->
+        <img class="product-placeholder" src="Clothing/Come.jpg" alt="Signature Shirt" />
+        <span class="product-tag">Shirt</span>
+      </div>
+      <p class="product-name">Signature Shirt</p>
+      <p class="product-price">R 890</p>
+    </div>
+
+    <div class="product-card" data-product="Roomy Hoodie" data-category="Hoodie" data-price="R 1290" data-description="Relaxed silhouette, brushed interior, soft hand feel." data-sizes="S,M,L,XL" data-colors="Slate,Clay,Midnight,Peach">
+      <div class="product-img product-hoodie">
+        <!-- Image for Roomy Hoodie (from Clothing folder) -->
+        <img class="product-placeholder" src="Clothing/cherry.jpg" alt="Roomy Hoodie" />
+        <span class="product-tag">Hoodie</span>
+      </div>
+      <p class="product-name">Roomy Hoodie</p>
+      <p class="product-price">R 1290</p>
+    </div>
+
+    <div class="product-card" data-product="Logotype Hat" data-category="Hat" data-price="R 420" data-description="Cropped crown with tonal embroidery and a lightweight lining." data-sizes="One Size" data-colors="Black,Khaki,Stone,Navy">
+      <div class="product-img product-hat">
+        <!-- Image for Logotype Hat (from Clothing folder) -->
+        <img class="product-placeholder" src="Clothing/Alien (1).jpg" alt="Logotype Hat" />
+        <span class="product-tag">Hat</span>
+      </div>
+      <p class="product-name">Logotype Hat</p>
+      <p class="product-price">R 420</p>
+    </div>
+
+    <div class="product-card" data-product="Relaxed Sweater" data-category="Sweater" data-price="R 1490" data-description="Subtle texture, wide cuff, and a polished collar line." data-sizes="S,M,L,XL" data-colors="Ivory,Stone,Forest,Brick">
+      <div class="product-img product-sweater">
+        <!-- Image for Relaxed Sweater (from Clothing folder) -->
+        <img class="product-placeholder" src="Clothing/Macshirt.jpg" alt="Relaxed Sweater" />
+        <span class="product-tag">Sweater</span>
+      </div>
+      <p class="product-name">Relaxed Sweater</p>
+      <p class="product-price">R 1490</p>
+    </div>
+  </div>
+</section>
+
+<div class="product-modal" id="product-modal" aria-hidden="true">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Close product details">×</button>
+    <div class="modal-content">
+      <div class="modal-preview">
+        <div class="modal-swirl"></div>
+      </div>
+      <div class="modal-copy">
+        <p class="section-label">Product</p>
+        <h2 class="modal-title" id="modal-title">Product Title</h2>
+        <p class="modal-category">Category name</p>
+        <p class="modal-description">Style details and story appear here.</p>
+        <div class="modal-options">
+          <div class="option-group">
+            <label for="size-select">Size</label>
+            <select id="size-select"></select>
+          </div>
+          <div class="option-group colors">
+            <p>Color</p>
+            <div class="color-options" id="color-options"></div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <span class="modal-price" id="modal-price">R 0</span>
+          <button class="btn-hero" id="add-to-bag">Add to Bag</button>
+        </div>
+        <p class="modal-note">Placeholder colorways are shown for the full catalogue experience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="section-inner split-grid reverse-grid">
+    <div class="contact-card">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let’s stay connected.</h2>
+      <p class="section-copy">Questions, custom requests, or just looking for the latest edit? Reach out and we’ll respond quickly.</p>
+      <div class="contact-list">
+        <div>
+          <strong>Email</strong>
+          <p>hello@fydt.design</p>
+        </div>
+        <div>
+          <strong>Phone</strong>
+          <p>+27 11 123 4567</p>
+        </div>
+        <div>
+          <strong>Follow</strong>
+          <p>Instagram · TikTok · WhatsApp</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-card contact-form-card">
+      <p class="form-label">Quick message</p>
+      <input type="text" placeholder="Name" />
+      <input type="email" placeholder="Email" />
+      <textarea placeholder="What are you looking for?"></textarea>
+      <button class="btn-secondary">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<section class="press">
+  <p class="section-label">As seen in</p>
+  <div class="press-grid">
+    <div class="press-item"><p class="press-name">Yoh</p></div>
+    <div class="press-item"><p class="press-name">Clothing design</p></div>
+    <div class="press-item"><p class="press-name">Wallpaper</p></div>
+    <div class="press-item"><p class="press-name">Vestoj</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand-name"><img src="FYDT/Logo.png" alt="FYDT? logo" class="footer-logo"> FYDT?</p>
+      <p class="footer-tagline">Curated capsules for every day. Modern ease with a premium edge for a softer statement.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">Instagram</a>
+        <a href="#" class="social-link">TikTok</a>
+        <a href="#" class="social-link">Facebook</a>
+        <a href="#" class="social-link">WhatsApp</a>
+        <a href="#" class="social-link">Email</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#shop">New Arrivals</a></li>
+        <li><a href="#shop">Shirts</a></li>
+        <li><a href="#shop">Hoodies</a></li>
+        <li><a href="#shop">Hats</a></li>
+        <li><a href="#shop">Sweaters</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Sizing Guide</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Care</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 FYDT?. All rights reserved.</p>
+    <div class="footer-policy">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Preferences</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
