@@ -179,7 +179,17 @@ checkoutOrder.addEventListener('click', () => {
     alert('Your cart is empty. Add something first.');
     return;
   }
-  alert(`Thanks for your order!\nTotal: ${formatPrice(calculateCartTotal())}`);
+
+  const messageLines = [
+    'Hi, I would like to order from FYDT: ',
+    ...cart.map(item => `* ${item.quantity}x ${item.product} (${item.size}, ${item.color}) - ${formatPrice(item.price)} each`),
+    `Total: ${formatPrice(calculateCartTotal())}`
+  ];
+
+  const whatsappText = encodeURIComponent(messageLines.join('\n'));
+  const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
+  window.open(whatsappUrl, '_blank');
+
   cart = [];
   updateCartUI();
   toggleCartDrawer(false);
