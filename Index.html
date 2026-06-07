@@ -8,6 +8,8 @@
   <!-- Favicon from FYDT folder -->
   <link rel="icon" href="FYDT/Favicon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 
@@ -31,7 +33,6 @@
   </button>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
     <li><a href="#about-us">About Us</a></li>
     <li><a href="#shop">Shop</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -47,7 +48,7 @@
       <p class="slide-sub">Designed for the Nolstagia </p>
       <div class="hero-actions">
         <a href="#shop" class="btn-hero">Browse the Shop</a>
-        <a href="#about" class="btn-secondary">Get ready for the Adventure</a>
+        <a href="#about-us" class="btn-secondary">Get ready for the Adventure</a>
       </div>
     </div>
   </div>
@@ -83,30 +84,6 @@
   </div>
 </section>
 
-<section class="about-block" id="about">
-  <div class="section-inner split-grid">
-    <div>
-      <p class="section-label">About</p>
-      <h2 class="section-title">A single page, a full story.</h2>
-      <p class="section-copy">FYDT? blends Creative and premium ease with honest texture.</p>
-      <div class="about-list">
-        <div>
-          <strong>Premium mood</strong>
-          <p>Crazy, rich contrasts, and easy wearable pieces.</p>
-        </div>
-        <div>
-          <strong>Accessible edit</strong>
-          <p>Every product is part of the same story  modern, soft, and ready to live in.</p>
-        </div>
-      </div>
-    </div>
-    <div class="about-card">
-      <p class="about-card-title">Your wardrobe should be a fun and Colourful</p>
-      <p class="about-card-copy">Tap the item to view details and select your preferred size and color.</p>
-    </div>
-  </div>
-</section>
-
 <section class="about-us-block" id="about-us">
   <div class="section-inner">
     <p class="section-label">About Us</p>
@@ -138,7 +115,7 @@
   </div>
 
   <div class="product-grid">
-    <div class="product-card" data-product="Signature Shirt" data-category="Shirt" data-price="R 890" data-description="Light cotton with a neat collar and soft drape." data-sizes="XS,S,M,L,XL" data-colors="Charcoal,Oat,Olive,Cobalt">
+    <div class="product-card" data-product="Signature Shirt" data-category="Shirt" data-price="R 890" data-description="Light cotton with a neat collar and soft drape." data-sizes="XS,S,M,L,XL" data-colors="White,Black" data-image-white="Clothing/Come.jpg" data-image-black="Clothing/BlackShirt.jpg">
       <div class="product-img product-shirt">
         <!-- Image for Signature Shirt (from Clothing folder) -->
         <img class="product-placeholder" src="Clothing/Come.jpg" alt="Signature Shirt" />
@@ -245,18 +222,32 @@
       <h2 class="section-title">Let’s stay connected.</h2>
       <p class="section-copy">Questions, custom requests, or just looking for the latest edit? Reach out and we’ll respond quickly.</p>
       <div class="contact-list">
-        <div>
-          <strong>Email</strong>
-          <p>hello@fydt.design</p>
+        <div class="contact-item">
+          <span class="contact-item-icon"><ion-icon name="mail-outline"></ion-icon></span>
+          <div>
+            <strong>Email</strong>
+            <p>hello@fydt.design</p>
+          </div>
         </div>
-        <div>
-          <strong>Phone</strong>
-          <p>+27 11 123 4567</p>
+        <div class="contact-item">
+          <span class="contact-item-icon"><ion-icon name="call-outline"></ion-icon></span>
+          <div>
+            <strong>Phone</strong>
+            <p>+27 11 123 4567</p>
+          </div>
         </div>
-        <div>
-          <strong>Follow</strong>
-          <p>Instagram · TikTok · WhatsApp</p>
+        <div class="contact-item">
+          <span class="contact-item-icon"><ion-icon name="share-social-outline"></ion-icon></span>
+          <div>
+            <strong>Follow</strong>
+            <p>Instagram · TikTok · WhatsApp</p>
+          </div>
         </div>
+      </div>
+      <div class="social-button-row">
+        <a href="#" class="social-button"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
+        <a href="#" class="social-button"><ion-icon name="logo-tiktok"></ion-icon> TikTok</a>
+        <a href="#" class="social-button"><ion-icon name="logo-whatsapp"></ion-icon> WhatsApp</a>
       </div>
     </div>
     <div class="contact-card contact-form-card">
@@ -285,11 +276,11 @@
       <p class="footer-brand-name"><img src="FYDT/Logo.png" alt="FYDT? logo" class="footer-logo"> FYDT?</p>
       <p class="footer-tagline">Curated capsules for every day. Modern ease with a premium edge for a softer statement.</p>
       <div class="footer-social">
-        <a href="#" class="social-link">Instagram</a>
-        <a href="#" class="social-link">TikTok</a>
-        <a href="#" class="social-link">Facebook</a>
-        <a href="#" class="social-link">WhatsApp</a>
-        <a href="#" class="social-link">Email</a>
+        <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
+        <a href="#" class="social-link"><ion-icon name="logo-tiktok"></ion-icon> TikTok</a>
+        <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
+        <a href="#" class="social-link"><ion-icon name="logo-whatsapp"></ion-icon> WhatsApp</a>
+        <a href="#" class="social-link"><ion-icon name="mail-outline"></ion-icon> Email</a>
       </div>
     </div>
     <div class="footer-col">
@@ -305,7 +296,6 @@
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
-        <li><a href="#about">About</a></li>
         <li><a href="#about-us">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#">Press</a></li>
