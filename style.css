@@ -1210,9 +1210,10 @@ footer {
 }
 
 /* ==========================================================================
-   12. MOBILE 2-COLUMN GRID OPTIMIZATION
+   12. MOBILE OPTIMIZATION (NAVBAR & CONTACT FORM FIX)
    ========================================================================== */
 @media (max-width: 992px) {
+  /* 1. Fix Product Grid Card Shrinkage */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1222,41 +1223,64 @@ footer {
 
   .product-card {
     width: 100%;
-    height: auto; /* Allows the card to scale based on content instead of stretching */
+    height: auto;
     display: flex;
     flex-direction: column;
   }
 
   .product-img {
-    height: 200px !important; /* Forces a natural height for the product images */
+    height: 200px !important;
     width: 100%;
     object-fit: cover;
   }
 
-  /* Fixes the text collision at the bottom */
   .product-details-wrap {
     display: flex;
-    flex-direction: column; /* Stacks the price below the name so they never collide */
+    flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    padding-top: 8px;
+    padding: 12px 8px; /* Added internal padding to breathe */
   }
 
-  .product-name {
-    font-size: 0.95rem;
-    line-height: 1.2;
-    margin: 0;
+  /* 2. Fix Navbar Text Wrapping & Overlap */
+  #main-nav {
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
   }
 
-  .product-price {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin: 0;
+  /* Hide regular links on mobile so they go into your hamburger menu drawer */
+  .nav-links {
+    display: none !important; 
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Keeps your profile, cart, and hamburger icon spaced out perfectly */
+  }
+
+  /* 3. Fix Contact Section Layout Stacking */
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column !important; /* Forces form to drop below the text */
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  .contact-info, .contact-form {
+    width: 100% !important; /* Allows both sides to take up full mobile width */
+  }
+
+  .contact-form button {
+    width: 100%; /* Makes "Send Message" button easy to click on phones */
   }
 }
 
 @media (max-width: 576px) {
   .product-img {
-    height: 170px !important; /* Slightly shorter image height on very small screens */
+    height: 170px !important;
   }
 }
