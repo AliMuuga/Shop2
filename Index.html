@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAJITA | CLOTHING STORE</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
   <link rel="icon" href="Assets/Favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -62,6 +64,7 @@
       </div>
     </div>
   </div>
+  
   <div class="hero-slide">
     <img src="Clothing/Front-btn-up.jpeg" alt="MAJITA Essentials Line">
     <div class="hero-slide-overlay">
@@ -72,6 +75,7 @@
       </div>
     </div>
   </div>
+  
   <div class="hero-slide">
     <img src="Clothing/Front-hoodie.jpeg" alt="MAJITA Minimalist Line">
     <div class="hero-slide-overlay">
@@ -83,8 +87,27 @@
     </div>
   </div>
   
-  <button class="slide-nav-btn prev-slide" id="prevSlide" aria-label="Previous Slide">←</button>
-  <button class="slide-nav-btn next-slide" id="nextSlide" aria-label="Next Slide">→</button>
+  <div class="hero-controls-bar">
+    <div class="controls-left-center">
+      <button class="ctrl-arrow-btn" id="prevSlide" aria-label="Previous Slide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      
+      <div class="ctrl-dots-container" id="slideDots">
+        <span class="ctrl-dot active" data-index="0"></span>
+        <span class="ctrl-dot" data-index="1"></span>
+        <span class="ctrl-dot" data-index="2"></span>
+      </div>
+      
+      <button class="ctrl-arrow-btn" id="nextSlide" aria-label="Next Slide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    
+    <button class="ctrl-pause-btn" id="pauseSlide" aria-label="Pause Slideshow">
+      <svg id="pauseIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="4" x2="18" y2="20"/><line x1="6" y1="4" x2="6" y2="20"/></svg>
+    </button>
+  </div>
 </section>
 
 <section class="about-us-block" id="about-us">

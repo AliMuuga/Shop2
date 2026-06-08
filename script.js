@@ -1,49 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   /* ==========================================================================
-     1. HERO SLIDESHOW
+     1. HERO SLIDESHOW (UPGRADED DOTS & PLAY/PAUSE CONTROLS)
      ========================================================================== */
   const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.ctrl-dot');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
+  const pauseBtn = document.getElementById('pauseSlide');
+  const pauseIcon = document.getElementById('pauseIcon');
+  
   let currentSlideIndex = 0;
   let slideTimer;
+  let isPaused = false;
+  const slideDuration = 5000; // Controls the standard slide duration in milliseconds
 
+  // Changes active slide and syncs corresponding layout indicator dot
   function showSlide(targetIndex) {
     if (!slides.length) return;
+    
+    // Deactivate current slide and dot state values
     slides[currentSlideIndex].classList.remove('active');
+    if (dots.length) dots[currentSlideIndex].classList.remove('active');
+    
+    // Cycle index seamlessly across array margins
     currentSlideIndex = (targetIndex + slides.length) % slides.length;
+    
+    // Activate new target slide and dot state values
     slides[currentSlideIndex].classList.add('active');
+    if (dots.length) dots[currentSlideIndex].classList.add('active');
   }
 
   function nextSlide() { showSlide(currentSlideIndex + 1); }
   function prevSlide() { showSlide(currentSlideIndex - 1); }
 
+  // Starts the background autoplay tracking interval
   function startSlideShow() {
-    if (slides.length > 1) {
-      slideTimer = setInterval(nextSlide, 5000);
+    clearInterval(slideTimer);
+    if (slides.length > 1 && !isPaused) {
+      slideTimer = setInterval(nextSlide, slideDuration);
     }
   }
 
+  // Safely resets timer intervals during active user interaction overrides
   function resetSlideTimer() {
-    clearInterval(slideTimer);
-    startSlideShow();
+    if (!isPaused) {
+      startSlideShow();
+    }
   }
 
+  // Click interaction hooks for manual navigation arrows
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => { prevSlide(); resetSlideTimer(); });
     nextBtn.addEventListener('click', () => { nextSlide(); resetSlideTimer(); });
   }
 
+  // Click interaction hooks for index indicator dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.dataset.index, 10);
+      showSlide(index);
+      resetSlideTimer();
+    });
+  });
+
+  // Play and Pause automation runtime toggle switcher
+  if (pauseBtn && pauseIcon) {
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      if (isPaused) {
+        clearInterval(slideTimer);
+        // Swaps dynamic visual rendering into play symbol format
+        pauseIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"/>`;
+        pauseBtn.setAttribute('aria-label', 'Play Slideshow');
+      } else {
+        // Swaps dynamic visual rendering into pause lines format
+        pauseIcon.innerHTML = `<line x1="18" y1="4" x2="18" y2="20"/><line x1="6" y1="4" x2="6" y2="20"/>`;
+        pauseBtn.setAttribute('aria-label', 'Pause Slideshow');
+        startSlideShow();
+      }
+    });
+  }
+
+  // Fire up the slideshow engine on page load
   startSlideShow();
 
   /* ==========================================================================
-     2. STORE STATE (CART & LOGIN)
+     2. STORE STATE (CART & LOGIN DATA MANAGEMENT structures)
      ========================================================================== */
   let shoppingCart = [];
   let currentProductCard = null;
   let userIsLoggedIn = false;
 
+  // Cached DOM selectors mapping object for organized access points
   const ui = {
     cards: document.querySelectorAll('.product-card'),
     modal: document.getElementById('product-modal'),
@@ -77,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ==========================================================================
-     3. SOUND EFFECT (WHEN ADDING TO CART)
+     3. AUDIO EFFECTS SYNTH ENGINE
      ========================================================================== */
   function playCartSound() {
     try {
@@ -97,12 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
       osc.start();
       osc.stop(ctx.currentTime + 0.15);
     } catch (e) {
-      console.warn("Audio waiting for user click.");
+      console.warn("Audio Context requires explicit viewport interaction clearance profile.");
     }
   }
 
   /* ==========================================================================
-     4. LOGIN & REGISTER POPUP LOGIC
+     4. IDENTITY REGISTRATION CONTROLS & SUB-MODAL UTILITIES
      ========================================================================== */
   function checkPasswordStrength(password) {
     const value = password.trim();
@@ -172,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     5. PRODUCT VIEW MODAL (WHEN YOU CLICK AN ITEM)
+     5. DYNAMIC PREVIEW MODAL LOGIC FOR THE CATALOG ITEMS
      ========================================================================== */
   function openProductModal(cardElement) {
     currentProductCard = cardElement;
@@ -191,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.modalPrice.textContent = `R ${product.priceValue}`;
     ui.modalImage.src = product.frontView;
 
+    // Generates sizing tag layout strings dynamically
     ui.sizeContainer.innerHTML = product.sizes.map((size, idx) => {
       const cleanSize = size.trim();
       return `<button type="button" class="size-token${idx === 0 ? ' active' : ''}" data-size="${cleanSize}">${cleanSize}</button>`;
@@ -203,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Validates whether back asset metadata parameters exist before building control tabs
     ui.viewOptionsContainer.innerHTML = `
       <button type="button" class="view-toggle active" data-perspective="front">Front View</button>
       ${product.backView ? `<button type="button" class="view-toggle" data-perspective="back">Back View</button>` : ''}
@@ -228,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ui.modalBackdrop) ui.modalBackdrop.addEventListener('click', closeProductModal);
 
   /* ==========================================================================
-     6. SHOPPING CART SYSTEM
+     6. CORE CART TRANSACTION PROCESSING UTILITIES
      ========================================================================== */
   function createCartId(item) {
     return `${item.name}|${item.size}|${item.color}`;
@@ -238,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return shoppingCart.reduce((total, item) => total + (item.price * item.quantity), 0);
   }
 
+  // Completely redraws and matches the basket items to runtime modifications
   function updateCartUI() {
     const totalItems = shoppingCart.reduce((total, item) => total + item.quantity, 0);
     ui.cartCounterBadge.textContent = totalItems;
@@ -267,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }).join('');
 
+    // Quantity modifiers click tracking events handles incremental steps
     ui.cartItemsContainer.querySelectorAll('.qty-change').forEach(btn => {
       btn.addEventListener('click', () => {
         const itemId = btn.dataset.id;
@@ -283,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Immediate complete item drop filter trigger
     ui.cartItemsContainer.querySelectorAll('.cart-remove').forEach(btn => {
       btn.addEventListener('click', () => {
         shoppingCart = shoppingCart.filter(item => createCartId(item) !== btn.dataset.id);
@@ -329,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ui.cartBackdrop) ui.cartBackdrop.addEventListener('click', () => toggleCartDrawer(false));
 
   /* ==========================================================================
-     7. SEND ORDER TO WHATSAPP
+     7. DISPATCH CART ORDER METADATA TO WHATSAPP API GATEWAYS
      ========================================================================== */
   ui.checkoutTrigger.addEventListener('click', () => {
     if (!shoppingCart.length) {
@@ -337,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Compiles catalog entries into clean, readable text strings
     const messageLines = [
       '⚡ *NEW ORDER - MAJITA STORE* ⚡',
       '________________________________',
@@ -351,13 +406,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const encodedMessage = encodeURIComponent(messageLines.join('\n'));
     window.open(`https://wa.me/27111234567?text=${encodedMessage}`, '_blank');
     
+    // Clear out cart instances local state configurations post transmission actions
     shoppingCart = [];
     updateCartUI();
     toggleCartDrawer(false);
   });
 
   /* ==========================================================================
-     8. EXTRA ACCESSIBILITY (KEYBOARD ESC KEY & MOBILE MENU)
+     8. EXTRA ACCESSIBILITY FRAMEWORKS (KEYBOARD ACCESSIBILITY ESC CLUTCH)
      ========================================================================== */
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -367,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Mobile drawer links mapping handler utilities
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const navLinksList = document.querySelector('.nav-links');
   if (mobileToggle && navLinksList) {
