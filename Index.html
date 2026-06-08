@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<title>FYDT?</title>
-  <!-- Favicon from FYDT folder -->
-  <link rel="icon" href="FYDT/Favicon.png" type="image/png">
-<link rel="stylesheet" href="style.css">
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>MAJITA | ARCHIVAL ESSENTIALS</title>
+  <link rel="icon" href="Assets/Favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav id="main-nav" class="nav-top">
-  <!-- Header logo image (replaces text) -->
+<div class="promo-marquee-container">
+  <div class="marquee-inner">
+    <span>MAJITA ORIGINS R400 UNTIL 16 JUNE &nbsp;·&nbsp;&nbsp;</span>
+    <span>MAJITA ORIGINS R400 UNTIL 16 JUNE &nbsp;·&nbsp;&nbsp;</span>
+    <span>MAJITA ORIGINS R400 UNTIL 16 JUNE &nbsp;·&nbsp;&nbsp;</span>
+    <span>MAJITA ORIGINS R400 UNTIL 16 JUNE &nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<nav id="main-nav">
   <a class="nav-logo" href="#home">
-    <img src="FYDT/LOGOO.png" alt="FYDT logo" class="nav-logo-img">
+    <img src="Assets/LOGOO.png" alt="MAJITA Logo" class="nav-logo-img">
   </a>
-  <button id="nav-toggle" aria-label="Toggle navigation menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <button id="cart-toggle" class="cart-button" aria-label="Open cart">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 4H3V6H5L8 15H19V13H9.42L8.56 10H19.19L20.42 5H7.21L7 4Z" fill="currentColor"/>
-      <circle cx="9" cy="19" r="1.5" fill="currentColor"/>
-      <circle cx="17" cy="19" r="1.5" fill="currentColor"/>
-    </svg>
-    <span id="cart-count" class="cart-count">0</span>
-  </button>
+  
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
-    <li><a href="#about-us">About Us</a></li>
+    <li><a href="#about-us">About</a></li>
     <li><a href="#shop">Shop</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+
+  <div class="nav-actions">
+    <button id="auth-toggle" class="icon-action-btn" aria-label="Account Access">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <button id="cart-toggle" class="icon-action-btn" aria-label="Open Shopping Bag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span id="cart-count" class="cart-count">0</span>
+    </button>
+    <button id="mobile-menu-toggle" class="mobile-hamburger" aria-label="Toggle Menu">
+      <span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<section class="hero" id="home">
-  <div class="slide slide-1 active">
-    <div class="slide-bg"></div>
-    <div class="slide-content">
-      <span class="slide-label">It's more than just clothes.</span>
-      <h1 class="slide-title">Is it Adventure time?<br>with a wink</h1>
-      <p class="slide-sub">Designed for the Nolstagia </p>
-      <div class="hero-actions">
-        <a href="#shop" class="btn-hero">Browse the Shop</a>
-        <a href="#about-us" class="btn-secondary">Get ready for the Adventure</a>
+<section class="hero-slideshow-container" id="home">
+  <div class="hero-slide active">
+    <img src="Clothing/Front-Tee.jpeg" alt="MAJITA Lookbook Signature Line">
+    <div class="hero-slide-overlay">
+      <div class="slide-content">
+        <p class="hero-eyebrow">MAJITA ORIGINS</p>
+        <h1 class="hero-title">Warm silhouettes for everyday elegance.</h1>
+        <a href="#shop" class="btn-hero">Shop the collection</a>
       </div>
     </div>
   </div>
-
-  <div class="slide slide-2">
-    <div class="slide-bg"></div>
-    <div class="slide-content">
-      <span class="slide-label">Exclusive</span>
-      <h1 class="slide-title">Shirts, hoodies,<br>and hats</h1>
-      <p class="slide-sub">Fun silhouettes with unexpected color notes and premium ease.</p>
-      <div class="hero-actions">
-        <a href="#shop" class="btn-hero">Cav the Catalogue</a>
+  <div class="hero-slide">
+    <img src="Clothing/Front-btn-up.jpeg" alt="MAJITA Tailored Essentials Line">
+    <div class="hero-slide-overlay">
+      <div class="slide-content">
+        <p class="hero-eyebrow">PREMIUM COMFORE</p>
+        <h1 class="hero-title">Relaxed fits built around effortless layering.</h1>
+        <a href="#shop" class="btn-hero">Explore Looks</a>
       </div>
     </div>
   </div>
-
-  <div class="slide slide-3">
-    <div class="slide-bg"></div>
-    <div class="slide-content">
-      <span class="slide-label">Design</span>
-      <h1 class="slide-title">Comfort that<br>feels cool</h1>
-      <p class="slide-sub">Every Design is made to be worn now, again, and shared.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-hero">Stay in Touch</a>
+  <div class="hero-slide">
+    <img src="Clothing/Front-hoodie.jpeg" alt="MAJITA Contemporary Minimalist Line">
+    <div class="hero-slide-overlay">
+      <div class="slide-content">
+        <p class="hero-eyebrow">CURATED PALETTES</p>
+        <h1 class="hero-title">Grounded neutrals in cream, beige and brown.</h1>
+        <a href="#shop" class="btn-hero">View Catalogue</a>
       </div>
     </div>
   </div>
-
-  <div class="hero-dots">
-    <div class="dot active" data-index="0"></div>
-    <div class="dot" data-index="1"></div>
-    <div class="dot" data-index="2"></div>
-  </div>
+  
+  <button class="slide-nav-btn prev-slide" id="prevSlide" aria-label="Previous Slide">←</button>
+  <button class="slide-nav-btn next-slide" id="nextSlide" aria-label="Next Slide">→</button>
 </section>
 
 <section class="about-us-block" id="about-us">
   <div class="section-inner">
-    <p class="section-label">About Us</p>
-    <h2 class="section-title">I design pieces that feel like Nolstagia.</h2>
+    <p class="section-label">Editorial Vision</p>
+    <h2 class="section-title">I design pieces that feel like Nostalgia.</h2>
     <div class="about-us-grid">
       <div class="about-us-item">
-        <p class="item-title">Built for starting a conversation</p>
-        <p>Soft finishes and easy fits created for the daily rhythm.</p>
+        <p class="item-title">Built for Dialogue</p>
+        <p>Soft finishes and intentional, relaxed proportions sculpted for the natural daily rhythm.</p>
       </div>
       <div class="about-us-item">
-        <p class="item-title">Diverse colorways</p>
-        <p>Find grounded neutrals and playful accent colors side by side.</p>
+        <p class="item-title">Grounded Chromatics</p>
+        <p>Grounded premium organic neutrals alongside rich, subtle custom-dyed accent tones.</p>
       </div>
       <div class="about-us-item">
-        <p class="item-title">Curated selections</p>
-        <p>Four signature styles with placeholders for other colorways, just like a catalogue.</p>
+        <p class="item-title">Curated Blueprints</p>
+        <p>Signature core silhouette matrices featuring deep technical adjustments across sizing options.</p>
       </div>
     </div>
   </div>
@@ -108,217 +107,233 @@
 <section class="shop" id="shop">
   <div class="section-header">
     <div>
-      <p class="section-label">Shop</p>
+      <p class="section-label">The Catalogue</p>
       <h2 class="section-title">Select your fit</h2>
     </div>
-    <p class="section-copy">Tap a product card to choose size and color. Each item is shown with a unique visual style and a product name front and center.</p>
+    <p class="section-copy">Tap an archival product silhouette to expand sizing architecture, view multi-angle compositions, and register pieces to your layout bag profile.</p>
   </div>
 
   <div class="product-grid">
-    <div class="product-card" data-product="Signature Shirt" data-category="Shirt" data-price="R 890" data-description="Light cotton with a neat collar and soft drape." data-sizes="XS,S,M,L,XL" data-colors="White,Black" data-image-white="Clothing/Come.jpg" data-image-black="Clothing/BlackShirt.jpg">
-      <div class="product-img product-shirt">
-        <!-- Image for Signature Shirt (from Clothing folder) -->
-        <img class="product-placeholder" src="Clothing/Come.jpg" alt="Signature Shirt" />
-        <span class="product-tag">Shirt</span>
+    <div class="product-card" data-product="Signature Tee" data-category="Shirt" data-price="890" data-description="Premium heavyweight luxury cotton jersey with dropped structural shoulder formatting and a clean neck bind finish." data-sizes="XS,S,M,L,XL" data-colors="Oat,Clay,Stone" data-front="Clothing/Front-Tee.jpeg" data-back="Clothing/Back-Tee.jpeg">
+      <div class="product-img">
+        <img class="product-placeholder" src="Clothing/Front-Tee.jpeg" alt="Signature Tee" />
+        <span class="product-tag">Core Line</span>
       </div>
-      <p class="product-name">Signature Shirt</p>
-      <p class="product-price">R 890</p>
+      <div class="product-details-wrap">
+        <p class="product-name">Signature Tee</p>
+        <p class="product-price">R 890</p>
+      </div>
     </div>
 
-    <div class="product-card" data-product="Roomy Hoodie" data-category="Hoodie" data-price="R 1290" data-description="Relaxed silhouette, brushed interior, soft hand feel." data-sizes="S,M,L,XL" data-colors="Slate,Clay,Midnight,Peach">
-      <div class="product-img product-hoodie">
-        <!-- Image for Roomy Hoodie (from Clothing folder) -->
-        <img class="product-placeholder" src="Clothing/cherry.jpg" alt="Roomy Hoodie" />
-        <span class="product-tag">Hoodie</span>
+    <div class="product-card" data-product="Black Hoodie" data-category="Hoodie" data-price="1290" data-description="Heavyweight brushed loopback knit fleece. Relaxed architectural hood framing devoid of drawcords for high-end styling styling optimization." data-sizes="S,M,L,XL" data-colors="Black" data-front="Clothing/Black-hoodie.jpeg">
+      <div class="product-img">
+        <img class="product-placeholder" src="Clothing/Black-hoodie.jpeg" alt="Black Hoodie" />
+        <span class="product-tag">Archival</span>
       </div>
-      <p class="product-name">Roomy Hoodie</p>
-      <p class="product-price">R 1290</p>
+      <div class="product-details-wrap">
+        <p class="product-name">Black Hoodie</p>
+        <p class="product-price">R 1290</p>
+      </div>
     </div>
 
-    <div class="product-card" data-product="Logotype Hat" data-category="Hat" data-price="R 420" data-description="Cropped crown with tonal embroidery and a lightweight lining." data-sizes="One Size" data-colors="Black,Khaki,Stone,Navy">
-      <div class="product-img product-hat">
-        <!-- Image for Logotype Hat (from Clothing folder) -->
-        <img class="product-placeholder" src="Clothing/Alien (1).jpg" alt="Logotype Hat" />
-        <span class="product-tag">Hat</span>
+    <div class="product-card" data-product="Classic Button Up" data-category="Shirt" data-price="980" data-description="Boxy structural classic overshirt crafted from raw high-density luxury texturized tactile canvas weave cotton." data-sizes="S,M,L,XL" data-colors="Cream,Cocoa" data-front="Clothing/Front-btn-up.jpeg" data-back="Clothing/Back-btn-up.jpeg">
+      <div class="product-img">
+        <img class="product-placeholder" src="Clothing/Front-btn-up.jpeg" alt="Classic Button Up" />
+        <span class="product-tag">Tailored</span>
       </div>
-      <p class="product-name">Logotype Hat</p>
-      <p class="product-price">R 420</p>
+      <div class="product-details-wrap">
+        <p class="product-name">Classic Button Up</p>
+        <p class="product-price">R 980</p>
+      </div>
     </div>
 
-    <div class="product-card" data-product="Relaxed Sweater" data-category="Sweater" data-price="R 1490" data-description="Subtle texture, wide cuff, and a polished collar line." data-sizes="S,M,L,XL" data-colors="Ivory,Stone,Forest,Brick">
-      <div class="product-img product-sweater">
-        <!-- Image for Relaxed Sweater (from Clothing folder) -->
-        <img class="product-placeholder" src="Clothing/Macshirt.jpg" alt="Relaxed Sweater" />
-        <span class="product-tag">Sweater</span>
+    <div class="product-card" data-product="Signature Hoodie" data-category="Hoodie" data-price="1190" data-description="Grounded neutral signature layering component built with structured premium loopback terry cloth construction." data-sizes="S,M,L,XL" data-colors="Sand,Mocha" data-front="Clothing/Front-hoodie.jpeg" data-back="Clothing/Back-hoodie.jpeg">
+      <div class="product-img">
+        <img class="product-placeholder" src="Clothing/Front-hoodie.jpeg" alt="Signature Hoodie" />
+        <span class="product-tag">Core Line</span>
       </div>
-      <p class="product-name">Relaxed Sweater</p>
-      <p class="product-price">R 1490</p>
+      <div class="product-details-wrap">
+        <p class="product-name">Signature Hoodie</p>
+        <p class="product-price">R 1190</p>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="product-modal" id="product-modal" aria-hidden="true">
-  <div class="modal-backdrop" id="modal-backdrop"></div>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <button class="modal-close" id="modal-close" aria-label="Close product details">×</button>
-    <div class="modal-content">
-      <div class="modal-preview">
-        <div class="modal-swirl"></div>
+  <div class="modal-overlay" id="modal-backdrop"></div>
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="close-modal" id="modal-close" aria-label="Close configuration overlay">&times;</button>
+    <div class="modal-left" id="modal-preview">
+      <img id="modalImage" class="modal-preview-img" src="" alt="">
+    </div>
+    <div class="modal-right">
+      <p class="product-category">MAJITA LABS</p>
+      <h2 id="modal-title" class="modal-title">Product Blueprint</h2>
+      <p id="modal-price" class="product-price">R 0</p>
+      <p id="modal-description" class="modal-description"></p>
+
+      <div class="option-group">
+        <label>Selected Sizing Matrix</label>
+        <div class="size-options" id="js-size-buttons"></div>
       </div>
-      <div class="modal-copy">
-        <p class="section-label">Product</p>
-        <h2 class="modal-title" id="modal-title">Product Title</h2>
-        <p class="modal-category">Category name</p>
-        <p class="modal-description">Style details and story appear here.</p>
-        <div class="modal-options">
-          <div class="option-group">
-            <label for="size-select">Size</label>
-            <select id="size-select"></select>
-          </div>
-          <div class="option-group colors">
-            <p>Color</p>
-            <div class="color-options" id="color-options"></div>
-          </div>
-        </div>
-        <div class="modal-actions">
-          <span class="modal-price" id="modal-price">R 0</span>
-          <button class="btn-hero" id="add-to-bag">Add to Bag</button>
-          <button type="button" class="btn-secondary modal-close-text" id="modal-close-text">Close</button>
-        </div>
-        <p class="modal-note">Placeholder colorways are shown for the full catalogue experience.</p>
+
+      <div class="option-group">
+        <label>Composition Perspectives</label>
+        <div class="view-options" id="color-options"></div>
       </div>
+
+      <button class="add-cart-btn" id="add-to-bag">Secure To Bag Layout</button>
     </div>
   </div>
 </div>
 
 <div class="cart-drawer" id="cart-drawer" aria-hidden="true">
+  <div class="cart-backdrop" id="cart-backdrop"></div>
   <div class="cart-panel">
-    <button class="cart-close" id="cart-close" aria-label="Close cart">×</button>
     <div class="cart-header">
-      <div>
-        <p class="section-label">Bag</p>
-        <h3>Your Cart</h3>
-      </div>
-      <p class="cart-summary" id="cart-summary">0 items</p>
+      <h2>Shopping Bag</h2>
+      <button class="close-cart" id="cart-close" aria-label="Retract Bag Matrix">&times;</button>
     </div>
+    
     <div class="cart-items" id="cart-items">
       <p class="cart-empty">Your cart is empty. Add a product to get started.</p>
     </div>
+    
     <div class="cart-footer">
-      <div class="cart-total-line">
-        <span>Total</span>
+      <div class="cart-total">
+        <span>Subtotal</span>
         <strong id="cart-total">R 0</strong>
       </div>
-      <button class="btn-hero cart-checkout" id="checkout-order">Checkout</button>
+      <button class="checkout-btn" id="checkout-order">Secure via WhatsApp Secure Checkout</button>
     </div>
   </div>
-  <div class="cart-backdrop" id="cart-backdrop"></div>
 </div>
 
-<section class="contact" id="contact">
-  <div class="section-inner split-grid reverse-grid">
-    <div class="contact-card">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">Let’s stay connected.</h2>
-      <p class="section-copy">Questions, custom requests, or just looking for the latest edit? Reach out and we’ll respond quickly.</p>
-      <div class="contact-list">
-        <div class="contact-item">
-          <span class="contact-item-icon"><ion-icon name="mail-outline"></ion-icon></span>
-          <div>
-            <strong>Email</strong>
-            <p>hello@fydt.design</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-icon"><ion-icon name="call-outline"></ion-icon></span>
-          <div>
-            <strong>Phone</strong>
-            <p>+27 11 123 4567</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-icon"><ion-icon name="share-social-outline"></ion-icon></span>
-          <div>
-            <strong>Follow</strong>
-            <p>Instagram · TikTok · WhatsApp</p>
-          </div>
-        </div>
-      </div>
-      <div class="social-button-row">
-        <a href="#" class="social-button"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
-        <a href="#" class="social-button"><ion-icon name="logo-tiktok"></ion-icon> TikTok</a>
-        <a href="#" class="social-button"><ion-icon name="logo-whatsapp"></ion-icon> WhatsApp</a>
-      </div>
+<div class="auth-modal" id="auth-modal" aria-hidden="true">
+  <div class="auth-backdrop" id="auth-backdrop"></div>
+  <div class="auth-card" role="dialog" aria-modal="true">
+    <button class="close-auth" id="auth-close" aria-label="Close authorization gate">&times;</button>
+    
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-target="login-view">Sign In</button>
+      <button class="auth-tab" data-target="register-view">Create Account</button>
     </div>
-    <div class="contact-card contact-form-card">
-      <p class="form-label">Quick message</p>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <textarea placeholder="What are you looking for?"></textarea>
-      <button class="btn-secondary">Send Message</button>
+
+    <div class="auth-view active" id="login-view">
+      <div class="auth-header">
+        <h2>Welcome Back</h2>
+        <p>Access your curated archival profiling datasets.</p>
+      </div>
+      <form class="auth-form-element" onsubmit="return false;">
+        <div class="input-field-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="name@domain.com" required autocomplete="email" />
+        </div>
+        <div class="input-field-group">
+          <div class="label-row">
+            <label>Password</label>
+            <button type="button" class="form-link-btn" id="go-forgot">Forgot Security Key?</button>
+          </div>
+          <input type="password" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="auth-submit-button security-login-trigger">Authorize Account Access</button>
+      </form>
+    </div>
+
+    <div class="auth-view" id="register-view">
+      <div class="auth-header">
+        <h2>Establish Membership</h2>
+        <p>Register identity parameters to activate advanced storage bag pipelines.</p>
+      </div>
+      <form class="auth-form-element" onsubmit="return false;">
+        <div class="input-field-group">
+          <label>Full Identity Legal Name</label>
+          <input type="text" placeholder="John Doe" required />
+        </div>
+        <div class="input-field-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="name@domain.com" required />
+        </div>
+        <div class="input-field-group">
+          <label>Establish Password Key</label>
+          <input id="reg-pass" type="password" placeholder="••••••••" required />
+          <div class="strength-meter"><span id="password-strength">Enter parameters...</span></div>
+        </div>
+        <button type="submit" class="auth-submit-button security-register-trigger">Initialize Account Profile</button>
+      </form>
+    </div>
+
+    <div class="auth-view" id="forgot-view">
+      <div class="auth-header">
+        <h2>Recover Access Signature</h2>
+        <p>Enter email coordinates to broadcast account password reset files.</p>
+      </div>
+      <form class="auth-form-element" onsubmit="return false;">
+        <div class="input-field-group">
+          <label>Registered Email coordinate</label>
+          <input type="email" placeholder="name@domain.com" required />
+        </div>
+        <button type="submit" class="auth-submit-button recovery-broadcast-trigger">Broadcast Reset Transmissions</button>
+        <button type="button" class="auth-back-to-login" id="back-from-forgot">Return to Sign In Window</button>
+      </form>
+    </div>
+
+    <div class="oauth-divider"><span>Or Streamline via Network Provider Protocols</span></div>
+    <div class="oauth-provider-stack">
+      <button type="button" class="oauth-btn google-provider" id="google-sso-trigger">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l3.227-3.227C18.241 1.483 15.42 0 12.24 0 5.58 0 0 5.58 0 12.24s5.58 12.24 12.24 12.24c6.96 0 11.57-4.894 11.57-11.79 0-.795-.085-1.4-.195-2.065H12.24z"/></svg>
+        Continue with Google
+      </button>
     </div>
   </div>
-</section>
+</div>
 
-<section class="press">
-  <p class="section-label">Just words</p>
-  <div class="press-grid">
-    <div class="press-item"><p class="press-name">Yoh</p></div>
-    <div class="press-item"><p class="press-name">Clothing design</p></div>
-    <div class="press-item"><p class="press-name">Wallpaper</p></div>
-    <div class="press-item"><p class="press-name">Hero</p></div>
+<section class="contact-section" id="contact">
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <p class="contact-label">Communications Matrix</p>
+      <h2>Let’s stay connected.</h2>
+      <p>Custom measurements or structural specifications questions? Route inquiries into our processing channels.</p>
+      <div class="contact-links">
+        <a href="mailto:hello@majita.store">hello@majita.store</a>
+        <a href="tel:+27111234567">+27 11 123 4567</a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <input type="text" placeholder="Identity Nomenclature" required />
+      <input type="email" placeholder="Communication Routing Address" required />
+      <textarea placeholder="Outline your technical request specification parameters..." required></textarea>
+      <button type="submit">Transmit Communication Packets</button>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-grid">
     <div>
-      <p class="footer-brand-name"><img src="FYDT/Logo.png" alt="FYDT? logo" class="footer-logo"> FYDT?</p>
-      <p class="footer-tagline">Curated capsules for every day. Modern ease with a premium edge for a softer statement.</p>
-      <div class="footer-social">
-        <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
-        <a href="#" class="social-link"><ion-icon name="logo-tiktok"></ion-icon> TikTok</a>
-        <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
-        <a href="#" class="social-link"><ion-icon name="logo-whatsapp"></ion-icon> WhatsApp</a>
-        <a href="#" class="social-link"><ion-icon name="mail-outline"></ion-icon> Email</a>
-      </div>
+      <img src="Assets/BLogo.png" alt="MAJITA Brand Identifier" class="footer-logo">
+      <p class="footer-tagline">Premium structural essential silhouettes executed in organic high-density neutral textile formats.</p>
     </div>
     <div class="footer-col">
-      <h4>Shop</h4>
+      <h4>Archival Directives</h4>
       <ul>
-        <li><a href="#shop">New Arrivals</a></li>
-        <li><a href="#shop">Shirts</a></li>
-        <li><a href="#shop">Hoodies</a></li>
-        <li><a href="#shop">Hats</a></li>
-        <li><a href="#shop">Sweaters</a></li>
+        <li><a href="#shop">New Wave Releases</a></li>
+        <li><a href="#shop">Structured Tops</a></li>
+        <li><a href="#shop">Loopback Layering</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Corporate Index</h4>
       <ul>
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Privacy</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">Sizing Guide</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">Care</a></li>
+        <li><a href="#about-us">Brand Manifestos</a></li>
+        <li><a href="#contact">Contact Pipelines</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 FYDT?. All rights reserved.</p>
-    <div class="footer-policy">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Cookie Preferences</a>
-    </div>
+    <p class="footer-copy">© 2026 MAJITA. All rights reserved.</p>
+    <img src="Assets/BLogo.png" alt="MAJITA Emblem" class="footer-bottom-brand-emblem">
   </div>
 </footer>
 
