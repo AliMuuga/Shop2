@@ -387,18 +387,25 @@ body {
   transform: scale(1.02); 
 }
 
+/* --- PREMIUM GLOSSY, NON-OBSTRUCTIVE PRODUCT TAGS --- */
 .product-tag { 
   position: absolute; 
-  top: 1.25rem; 
-  left: 1.25rem; 
-  background: var(--palette-dark-charcoal); 
-  color: var(--palette-white); 
-  font-size: 0.65rem; 
-  font-weight: 600; 
+  top: 8px !important; 
+  left: 8px !important; 
+  background: rgba(255, 255, 255, 0.45) !important; 
+  backdrop-filter: blur(12px) saturate(140%) !important; 
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.4) !important; 
+  color: var(--palette-dark-charcoal) !important; 
+  font-size: 0.6rem !important; 
+  font-weight: 700 !important; 
+  letter-spacing: 0.12em !important; 
   text-transform: uppercase; 
-  padding: 0.5rem 1rem; 
-  letter-spacing: 0.1em; 
-  border-radius: 4px; 
+  padding: 4px 10px !important; 
+  border-radius: 4px !important; 
+  box-shadow: 0 4px 12px rgba(74, 55, 40, 0.05) !important;
+  z-index: 5;
+  pointer-events: none; 
 }
 
 .product-details-wrap { 
@@ -421,35 +428,6 @@ body {
   color: var(--palette-brown-muted); 
 }
 
-/* --- PREMIUM GLOSSY, NON-OBSTRUCTIVE PRODUCT TAGS --- */
-.product-tag { 
-  position: absolute; 
-  /* Clears the clothes by locking to the absolute top-left edge of the card */
-  top: 8px !important; 
-  left: 8px !important; 
-  
-  /* The High-End Glossy Formula */
-  background: rgba(255, 255, 255, 0.45) !important; /* Semi-translucent base */
-  backdrop-filter: blur(12px) saturate(140%) !important; /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important; /* Safari compliance */
-  border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Soft edge gloss light reflection */
-  
-  /* Text adjustments for pristine visibility against the glossy glass */
-  color: var(--palette-dark-charcoal) !important; 
-  font-size: 0.6rem !important; 
-  font-weight: 700 !important; 
-  letter-spacing: 0.12em !important; 
-  text-transform: uppercase; 
-  
-  /* Compact, elegant editorial padding */
-  padding: 4px 10px !important; 
-  border-radius: 4px !important; 
-  box-shadow: 0 4px 12px rgba(74, 55, 40, 0.05) !important;
-  z-index: 5;
-  pointer-events: none; /* Ensures cards remain flawlessly clickable on mobile */
-}
-
-/* Optional variation: If a product is exceptionally light and needs high-contrast glossy tags */
 .product-card.dark-tag-variant .product-tag {
   background: rgba(28, 26, 25, 0.45) !important; 
   border: 1px solid rgba(28, 26, 25, 0.1) !important;
@@ -1279,11 +1257,9 @@ footer {
     width: calc(100% - 40px);
     max-width: 380px;
     height: 54px;
-    
     background: rgba(245, 239, 235, 0.4) !important; 
     backdrop-filter: blur(25px) saturate(120%) !important; 
     -webkit-backdrop-filter: blur(25px) saturate(120%) !important;
-    
     border: 1px solid rgba(74, 55, 40, 0.15) !important; 
     border-radius: 30px !important;
     box-shadow: 0 10px 30px rgba(74, 55, 40, 0.12) !important;
@@ -1359,11 +1335,11 @@ footer {
     display: none !important;
   }
 
-  /* --- UNSQUEEZED EDITORIAL PRODUCT GRID (REF: image_ce9d6b.jpg) --- */
+  /* --- UNSQUEEZED EDITORIAL PRODUCT GRID --- */
   .product-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 28px 16px !important; /* Elegant vertical row clearance space */
+    gap: 28px 16px !important; 
     padding: 16px !important;
     background-color: var(--palette-cream);
   }
@@ -1371,7 +1347,7 @@ footer {
   .product-card {
     width: 100% !important;
     height: auto !important; 
-    background: transparent !important; /* Drops heavy enclosing card boxes entirely */
+    background: transparent !important; 
     border: none !important; 
     box-shadow: none !important;
     border-radius: 0px !important;
@@ -1380,127 +1356,80 @@ footer {
 
   .product-img {
     width: 100% !important;
-    height: auto !important; /* Decouples squishing limitations completely */
-    aspect-ratio: 1 / 1; /* Maintains perfect balanced framing proportions */
-    object-fit: contain !important; /* Preserves natural asset shapes perfectly */
+    height: auto !important; 
+    aspect-ratio: 1 / 1; 
+    object-fit: contain !important; 
     background: transparent !important;
     border-radius: 0px !important;
   }
 
   .product-placeholder {
-    transform: none !important; /* Prevents unwanted scaling behaviors on taps */
+    transform: none !important; 
   }
 
   .product-details-wrap {
     display: flex;
     flex-direction: column !important;
     gap: 4px;
-    padding: 10px 0px 0px 0px !important; /* Flushes copy beautifully flat with image edges */
+    padding: 10px 0px 0px 0px !important; 
     background: transparent !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
   }
 
   .product-name {
-    font-family: var(--font-sans) !important; /* Swaps to clean modern line types for small viewports */
+    font-family: var(--font-sans) !important; 
     font-size: 0.85rem !important;
     line-height: 1.3 !important;
     font-weight: 600 !important;
-    text-transform: uppercase; /* Mirrors structural character lines seen in image_ce9d6b.jpg */
-    letter-spacing: 0.03em;
-    color: var(--palette-brown) !important;
-  }
-
-  .product-price {
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
-    color: var(--palette-brown-muted) !important;
-    margin-top: 2px;
-  }
-
-  /* --- CONTACT SUBMISSION FORM STACK SECTION --- */
-  .contact-section {
-    background-color: var(--palette-beige);
-    padding: 40px 0;
-    color: var(--palette-brown);
-  }
-
-  .contact-wrapper {
-    display: flex;
-    flex-direction: column !important;
-    gap: 32px;
-    padding: 0 20px !important;
-  }
-
-  .contact-info, .contact-form {
-    width: 100% !important;
-  }
-
-  /* --- COMPLETE CLOSING FOOTER LAYER CLEANUP --- */
-  footer {
-    background-color: var(--palette-white) !important;
-    color: var(--palette-brown) !important;
-    border-top: 1px solid rgba(74, 55, 40, 0.08);
-    padding: 40px 20px 24px 20px !important;
-    margin-top: 0 !important;
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
-  }
-
-  .footer-grid {
-    display: flex;
-    flex-direction: column !important;
-    gap: 30px !important;
-    width: 100%;
-  }
-
-  .footer-col {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .footer-col h4 {
-    margin: 0 0 12px 0 !important;
-    font-size: 1rem;
+    text-transform: uppercase; 
     letter-spacing: 0.05em;
-    color: var(--palette-brown);
-    text-transform: uppercase;
   }
 
-  .footer-col ul {
-    padding: 0 !important;
-    margin: 0 !important;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  /* --- PRODUCT EXPANSION PREVIEW MODAL MOBILE RESPONSIVENESS FIX --- */
+  .product-modal {
+    padding: 12px;
   }
 
-  .footer-col ul li a {
-    color: var(--palette-brown-muted) !important;
-    text-decoration: none;
+  .modal-card {
+    grid-template-columns: 1fr !important; /* Stack image sections over details vertically */
+    max-height: 92vh;                     /* Prevent modal clipping on short screens */
+    overflow-y: auto;                      /* Seamless scroll flow for text-heavy screens */
+    border-radius: 16px;
   }
 
-  .footer-bottom {
-    margin-top: 40px !important;
-    padding-top: 20px !important;
-    border-top: 1px solid var(--palette-beige);
-    display: flex;
-    flex-direction: column-reverse !important;
-    align-items: center !important;
-    gap: 16px !important;
-    text-align: center;
+  .modal-left {
+    min-height: auto !important;           /* Clear desktop strict layouts */
+    height: 320px;                         /* Set proper containment zone for photo assets */
+    background: var(--palette-white);
+    padding: 16px 16px 0 16px;
   }
-}
 
-/* Minimal adjustment calibrations for ultra-narrow mobile viewports */
-@media (max-width: 480px) {
-  .hero-slideshow-container {
-    height: 65vh;
+  .modal-preview-img {
+    max-height: 100%;
+    object-fit: contain;
+    padding: 0;
   }
-  .hero-controls-bar {
-    width: calc(100% - 24px);
-    bottom: 16px;
+
+  .modal-right {
+    padding: 2rem 1.5rem !important;      /* Release side real-estate to maximize text visibility */
+  }
+
+  .modal-title {
+    font-size: 1.8rem !important;         /* Scale typography for safe structural line wraps */
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-description {
+    margin-bottom: 1.75rem;
+  }
+  
+  .option-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .size-token, .view-toggle {
+    padding: 0.75rem 1.25rem;             /* Boost absolute interactive dimensions for tap-accuracy */
+    font-size: 0.75rem;
   }
 }
