@@ -1392,15 +1392,15 @@ footer {
   }
 
   .modal-card {
-    grid-template-columns: 1fr !important; /* Stack image sections over details vertically */
-    max-height: 92vh;                     /* Prevent modal clipping on short screens */
-    overflow-y: auto;                      /* Seamless scroll flow for text-heavy screens */
+    grid-template-columns: 1fr !important;
+    max-height: 92vh;                     
+    overflow-y: auto;                      
     border-radius: 16px;
   }
 
   .modal-left {
-    min-height: auto !important;           /* Clear desktop strict layouts */
-    height: 320px;                         /* Set proper containment zone for photo assets */
+    min-height: auto !important;           
+    height: 320px;                         
     background: var(--palette-white);
     padding: 16px 16px 0 16px;
   }
@@ -1412,11 +1412,11 @@ footer {
   }
 
   .modal-right {
-    padding: 2rem 1.5rem !important;      /* Release side real-estate to maximize text visibility */
+    padding: 2rem 1.5rem !important;      
   }
 
   .modal-title {
-    font-size: 1.8rem !important;         /* Scale typography for safe structural line wraps */
+    font-size: 1.8rem !important;         
     margin-bottom: 0.5rem;
   }
 
@@ -1429,7 +1429,17 @@ footer {
   }
 
   .size-token, .view-toggle {
-    padding: 0.75rem 1.25rem;             /* Boost absolute interactive dimensions for tap-accuracy */
+    padding: 0.75rem 1.25rem;             
     font-size: 0.75rem;
+  }
+
+  /* --- CONTACT ZONE MOBILE FLUIDITY FIX --- */
+  .contact-section { 
+    padding: 4rem 6% !important; 
+  }
+  
+  .contact-wrapper { 
+    grid-template-columns: 1fr !important; 
+    gap: 3rem !important;                  
   }
 }
