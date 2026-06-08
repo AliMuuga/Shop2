@@ -1219,7 +1219,8 @@ footer {
     overflow-x: hidden; /* Drops hidden accidental horizontal scrolling triggers */
     margin: 0;
     padding: 0;
-    background-color: #0d0d0d; /* Establishes clean dark contrast background grounding */
+    background-color: #fcfaf2; /* Deep, rich premium Cream White base grounding */
+    color: #4a3b32; /* Deep warm brown text for high-end readability contrast */
   }
 
   /* --- HIGH-END RESPONSIVE HERO SECTIONS --- */
@@ -1230,9 +1231,10 @@ footer {
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden;
+    background-color: #f5eedc; /* Soft Beige loading canvas fallback */
   }
 
-  /* --- THE LUXURY GLASS MORPHISM SLIDER CONTROL BAR --- */
+  /* --- THE LUXURY WARM GLASS MORPHISM SLIDER CONTROL BAR --- */
   .hero-controls-bar {
     position: absolute;
     bottom: 24px; /* Suspends the bar so it floats cleanly above the margins */
@@ -1241,12 +1243,16 @@ footer {
     width: calc(100% - 40px); /* Provides an elegant modern margin edge gap */
     max-width: 380px;
     height: 54px;
-    background: rgba(255, 255, 255, 0.05) !important; /* Premium ultra-low tint value */
-    backdrop-filter: blur(20px) saturate(180%) !important; /* Hyper-glossy liquid glass frosting */
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Crisp obsidian diamond edge line ring */
+    
+    /* Luxury warm beige tinted fluid glass look */
+    background: rgba(245, 238, 220, 0.4) !important; 
+    backdrop-filter: blur(25px) saturate(120%) !important; 
+    -webkit-backdrop-filter: blur(25px) saturate(120%) !important;
+    
+    /* Sophisticated, subtle warm brown border framing */
+    border: 1px solid rgba(74, 59, 50, 0.15) !important; 
     border-radius: 30px !important; /* Pill profile architecture layout elements */
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important; /* Soft premium depth shadow separation */
+    box-shadow: 0 10px 30px rgba(74, 59, 50, 0.12) !important; /* Soft earthy shadow separation */
     padding: 0 24px !important;
     display: flex;
     align-items: center;
@@ -1262,11 +1268,12 @@ footer {
     transform: none !important; /* Nullify old spatial layout adjustment parameters */
   }
 
-  /* High Gloss Minimalist Functional Interactive Elements */
+  /* Warm Elegant Earth Tone Interactive Controls */
   .ctrl-arrow-btn, .ctrl-pause-btn {
-    color: #ffffff !important;
+    color: #4a3b32 !important; /* Crisp core brown icon tint */
     opacity: 0.8;
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.6) !important; /* Clean white button background */
+    border: 1px solid rgba(74, 59, 50, 0.1);
     border-radius: 50%;
     width: 34px;
     height: 34px;
@@ -1278,8 +1285,9 @@ footer {
 
   .ctrl-arrow-btn:hover, .ctrl-pause-btn:hover {
     opacity: 1;
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: #ffffff !important; /* Solid bright white emphasis pop on tap */
     transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
 
   .ctrl-dots-container {
@@ -1289,17 +1297,17 @@ footer {
   }
 
   .ctrl-dot {
-    width: 6px;
-    height: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 7px;
+    height: 7px;
+    border: 1px solid rgba(74, 59, 50, 0.4);
     background: transparent;
     border-radius: 50%;
     transition: all 0.3s ease;
   }
 
   .ctrl-dot.active {
-    background-color: #ffffff !important;
-    border-color: #ffffff !important;
+    background-color: #4a3b32 !important; /* Solid brown dynamic tracking state highlight */
+    border-color: #4a3b32 !important;
     width: 18px; /* Linear extended pill accent indicators */
     border-radius: 4px;
     opacity: 1;
@@ -1308,7 +1316,8 @@ footer {
   /* --- MOBILE BRAND NAVIGATION OVERLAPS FIX --- */
   #main-nav {
     padding: 14px 20px;
-    background: #000000;
+    background: #ffffff; /* Fresh, crisp clean white backdrop fill */
+    border-bottom: 1px solid rgba(74, 59, 50, 0.06);
     position: relative;
     z-index: 100;
   }
@@ -1323,13 +1332,14 @@ footer {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 14px !important;
     padding: 16px !important;
-    background-color: #0d0d0d;
+    background-color: #fcfaf2; /* Seamless clean cream ground extension */
   }
 
   .product-card {
     width: 100% !important;
     height: auto !important; /* Completely kills rigid card stretching trends */
-    background: #121212 !important;
+    background: #ffffff !important; /* Pure white card platform frames */
+    border: 1px solid rgba(74, 59, 50, 0.05);
     border-radius: 8px;
     overflow: hidden;
   }
@@ -1344,12 +1354,14 @@ footer {
     flex-direction: column !important;
     gap: 4px;
     padding: 12px 10px !important;
+    background: #ffffff;
   }
 
   /* --- CONTACT SUBMISSION FORM STACK SECTION --- */
   .contact-section {
-    background-color: #0d0d0d;
+    background-color: #f5eedc; /* Rich beige break contrast block */
     padding: 40px 0;
+    color: #4a3b32;
   }
 
   .contact-wrapper {
@@ -1365,7 +1377,9 @@ footer {
 
   /* --- COMPLETE CLOSING FOOTER LAYER CLEANUP --- */
   footer {
-    background-color: #000000 !important;
+    background-color: #ffffff !important; /* Clean premium bright white grounding */
+    color: #4a3b32 !important;
+    border-top: 1px solid rgba(74, 59, 50, 0.08);
     padding: 40px 20px 24px 20px !important;
     margin-top: 0 !important;
     position: relative;
@@ -1389,6 +1403,8 @@ footer {
     margin: 0 0 12px 0 !important;
     font-size: 1rem;
     letter-spacing: 0.05em;
+    color: #4a3b32;
+    text-transform: uppercase;
   }
 
   .footer-col ul {
@@ -1400,10 +1416,15 @@ footer {
     gap: 10px; /* Gives links broad, safe gaps so they can be clicked easily */
   }
 
+  .footer-col ul li a {
+    color: rgba(74, 59, 50, 0.8) !important;
+    text-decoration: none;
+  }
+
   .footer-bottom {
     margin-top: 40px !important;
     padding-top: 20px !important;
-    border-top: 1px solid #111111;
+    border-top: 1px solid rgba(74, 59, 50, 0.08);
     display: flex;
     flex-direction: column-reverse !important; /* Ensures the emblem stacks cleanly above copyright notes */
     align-items: center !important;
