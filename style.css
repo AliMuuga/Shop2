@@ -1210,42 +1210,53 @@ footer {
 }
 
 /* ==========================================================================
-   11. FLUID MOBILE DESIGN LAYOUT ADAPTABILITY
-   ========================================================================= */
+   12. MOBILE 2-COLUMN GRID OPTIMIZATION
+   ========================================================================== */
 @media (max-width: 992px) {
-  #main-nav { padding: 1.25rem 6%; }
-  .nav-links { display: none; } 
-  .mobile-hamburger { display: flex; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .modal-card { grid-template-columns: 1fr; max-height: 85vh; overflow-y: auto; }
-  .modal-left { min-height: 280px; height: 300px; }
-  .modal-right { padding: 2.5rem; }
-  .contact-wrapper { grid-template-columns: 1fr; gap: 3.5rem; }
-}
-
-@media (max-width: 576px) {
-  .about-us-block, .shop, .contact-section { padding: 5rem 6%; }
-  .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .cart-panel { right: 12px; top: 12px; bottom: 12px; width: calc(100% - 24px); padding: 1.5rem; }
-}
-
-/* Mobile Responsive Grid Setup */
-@media (max-width: 768px) {
   .product-grid {
     display: grid;
-    /* This creates exactly 2 equal columns, filling the screen width */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 12px; /* A slightly tighter gap so images stay as large as possible */
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
     padding: 12px;
   }
 
   .product-card {
-    /* Ensures the card content, text, and images scale down perfectly */
-    width: 100%; 
+    width: 100%;
+    height: auto; /* Allows the card to scale based on content instead of stretching */
+    display: flex;
+    flex-direction: column;
   }
 
-  .product-card img {
-    height: 180px; /* Adjust this height if needed so images don't look squished */
+  .product-img {
+    height: 200px !important; /* Forces a natural height for the product images */
+    width: 100%;
     object-fit: cover;
+  }
+
+  /* Fixes the text collision at the bottom */
+  .product-details-wrap {
+    display: flex;
+    flex-direction: column; /* Stacks the price below the name so they never collide */
+    align-items: flex-start;
+    gap: 4px;
+    padding-top: 8px;
+  }
+
+  .product-name {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .product-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-img {
+    height: 170px !important; /* Slightly shorter image height on very small screens */
   }
 }
