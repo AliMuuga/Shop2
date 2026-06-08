@@ -1,50 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   /* ==========================================================================
-     1. CAROUSEL CONTROLLER ENGINE
+     1. HERO SLIDESHOW
      ========================================================================== */
   const slides = document.querySelectorAll('.hero-slide');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
   let currentSlideIndex = 0;
-  let automaticSlideTimer;
+  let slideTimer;
 
-  function setSlidePosition(targetIndex) {
+  function showSlide(targetIndex) {
     if (!slides.length) return;
     slides[currentSlideIndex].classList.remove('active');
     currentSlideIndex = (targetIndex + slides.length) % slides.length;
     slides[currentSlideIndex].classList.add('active');
   }
 
-  function advanceCarouselSlide() { setSlidePosition(currentSlideIndex + 1); }
-  function regressCarouselSlide() { setSlidePosition(currentSlideIndex - 1); }
+  function nextSlide() { showSlide(currentSlideIndex + 1); }
+  function prevSlide() { showSlide(currentSlideIndex - 1); }
 
-  function initCarouselClock() {
+  function startSlideShow() {
     if (slides.length > 1) {
-      automaticSlideTimer = setInterval(advanceCarouselSlide, 5000);
+      slideTimer = setInterval(nextSlide, 5000);
     }
   }
 
-  function flushCarouselClock() {
-    clearInterval(automaticSlideTimer);
-    initCarouselClock();
+  function resetSlideTimer() {
+    clearInterval(slideTimer);
+    startSlideShow();
   }
 
   if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => { regressCarouselSlide(); flushCarouselClock(); });
-    nextBtn.addEventListener('click', () => { advanceCarouselSlide(); flushCarouselClock(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetSlideTimer(); });
+    nextBtn.addEventListener('click', () => { nextSlide(); resetSlideTimer(); });
   }
 
-  initCarouselClock();
+  startSlideShow();
 
   /* ==========================================================================
-     2. GLOBAL REGISTRY STATE
+     2. STORE STATE (CART & LOGIN)
      ========================================================================== */
-  let shoppingBagMatrix = [];
-  let activelySelectedProductCard = null;
-  let accountAuthorizationState = false;
+  let shoppingCart = [];
+  let currentProductCard = null;
+  let userIsLoggedIn = false;
 
-  const htmlElementRegistry = {
+  const ui = {
     cards: document.querySelectorAll('.product-card'),
     modal: document.getElementById('product-modal'),
     modalBackdrop: document.getElementById('modal-backdrop'),
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ==========================================================================
-     3. AUDIO SYNTH PACKET PIPELINE (PROCEDURAL REACTION)
+     3. SOUND EFFECT (WHEN ADDING TO CART)
      ========================================================================== */
-  function dispatchBagInsertionChime() {
+  function playCartSound() {
     try {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!AudioContextClass) return;
@@ -97,33 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
       osc.start();
       osc.stop(ctx.currentTime + 0.15);
     } catch (e) {
-      console.warn("Audio processing framework deferred until interaction profile registers.");
+      console.warn("Audio waiting for user click.");
     }
   }
 
   /* ==========================================================================
-     4. UNIFIED AUTHENTICATION GATEWAY PIPELINE
+     4. LOGIN & REGISTER POPUP LOGIC
      ========================================================================== */
-  function assessPasswordKeyStrength(passwordString) {
-    const value = passwordString.trim();
-    if (!value) return { label: 'Awaiting values...', hex: '#8C7662' };
-    if (value.length < 6) return { label: 'Insufficient Sizing Matrix', hex: '#9E2A2B' };
-    if (/[A-Z]/.test(value) && /[0-9]/.test(value)) return { label: 'High Security Profile', hex: '#2F4F25' };
-    return { label: 'Moderate Metrics', hex: '#D35400' };
+  function checkPasswordStrength(password) {
+    const value = password.trim();
+    if (!value) return { label: 'Enter password...', hex: '#8C7662' };
+    if (value.length < 6) return { label: 'Too Short', hex: '#9E2A2B' };
+    if (/[A-Z]/.test(value) && /[0-9]/.test(value)) return { label: 'Strong Password', hex: '#2F4F25' };
+    return { label: 'Medium Strength', hex: '#D35400' };
   }
 
-  if (htmlElementRegistry.regPasswordInput) {
-    htmlElementRegistry.regPasswordInput.addEventListener('input', (e) => {
-      const metrics = assessPasswordKeyStrength(e.target.value);
-      htmlElementRegistry.passwordMeterText.textContent = metrics.label;
-      htmlElementRegistry.passwordMeterText.style.color = metrics.hex;
+  if (ui.regPasswordInput) {
+    ui.regPasswordInput.addEventListener('input', (e) => {
+      const strength = checkPasswordStrength(e.target.value);
+      ui.passwordMeterText.textContent = strength.label;
+      ui.passwordMeterText.style.color = strength.hex;
     });
   }
 
-  htmlElementRegistry.authTabs.forEach(tab => {
+  ui.authTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      htmlElementRegistry.authTabs.forEach(t => t.classList.remove('active'));
-      htmlElementRegistry.authViews.forEach(v => v.classList.remove('active'));
+      ui.authTabs.forEach(t => t.classList.remove('active'));
+      ui.authViews.forEach(v => v.classList.remove('active'));
       
       tab.classList.add('active');
       const targetView = document.getElementById(tab.dataset.target);
@@ -136,238 +136,237 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (forgotTriggerBtn && returnToLoginBtn) {
     forgotTriggerBtn.addEventListener('click', () => {
-      htmlElementRegistry.authViews.forEach(v => v.classList.remove('active'));
+      ui.authViews.forEach(v => v.classList.remove('active'));
       document.getElementById('forgot-view').classList.add('active');
     });
     returnToLoginBtn.addEventListener('click', () => {
-      htmlElementRegistry.authViews.forEach(v => v.classList.remove('active'));
+      ui.authViews.forEach(v => v.classList.remove('active'));
       document.getElementById('login-view').classList.add('active');
     });
   }
 
-  function accessAuthGate(visibilityState) {
-    htmlElementRegistry.authModal.classList.toggle('open', visibilityState);
+  function toggleAuthPopup(show) {
+    ui.authModal.classList.toggle('open', show);
   }
 
-  htmlElementRegistry.authToggle.addEventListener('click', () => {
-    if (accountAuthorizationState) {
-      accountAuthorizationState = false;
-      htmlElementRegistry.authToggle.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
-      alert("Session terminal disconnected successfully.");
+  ui.authToggle.addEventListener('click', () => {
+    if (userIsLoggedIn) {
+      userIsLoggedIn = false;
+      ui.authToggle.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+      alert("Logged out successfully.");
       return;
     }
-    accessAuthGate(true);
+    toggleAuthPopup(true);
   });
 
-  if (htmlElementRegistry.authClose) htmlElementRegistry.authClose.addEventListener('click', () => accessAuthGate(false));
-  if (htmlElementRegistry.authBackdrop) htmlElementRegistry.authBackdrop.addEventListener('click', () => accessAuthGate(false));
+  if (ui.authClose) ui.authClose.addEventListener('click', () => toggleAuthPopup(false));
+  if (ui.authBackdrop) ui.authBackdrop.addEventListener('click', () => toggleAuthPopup(false));
 
   document.querySelectorAll('.security-login-trigger, .security-register-trigger, .recovery-broadcast-trigger, #google-sso-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
-      accountAuthorizationState = true;
-      htmlElementRegistry.authToggle.innerHTML = `<span style="font-size:0.7rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;">Sign Out</span>`;
-      accessAuthGate(false);
-      alert("Security Token Synchronized successfully.");
+      userIsLoggedIn = true;
+      ui.authToggle.innerHTML = `<span style="font-size:0.7rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;">Sign Out</span>`;
+      toggleAuthPopup(false);
+      alert("Successfully logged in.");
     });
   });
 
   /* ==========================================================================
-     5. DYNAMIC INTERACTIVE DETAIL MATRIX MODAL
+     5. PRODUCT VIEW MODAL (WHEN YOU CLICK AN ITEM)
      ========================================================================== */
-  function triggerCatalogueModal(cardElement) {
-    activelySelectedProductCard = cardElement;
+  function openProductModal(cardElement) {
+    currentProductCard = cardElement;
     
-    const context = {
-      title: cardElement.dataset.product || 'Archival Piece',
+    const product = {
+      title: cardElement.dataset.product || 'Item',
       description: cardElement.dataset.description || '',
       priceValue: cardElement.dataset.price || '0',
-      sizeArray: (cardElement.dataset.sizes || 'S,M,L').split(','),
+      sizes: (cardElement.dataset.sizes || 'S,M,L').split(','),
       frontView: cardElement.dataset.front || '',
       backView: cardElement.dataset.back || ''
     };
 
-    htmlElementRegistry.modalTitle.textContent = context.title;
-    htmlElementRegistry.modalDescription.textContent = context.description;
-    htmlElementRegistry.modalPrice.textContent = `R ${context.priceValue}`;
-    htmlElementRegistry.modalImage.src = context.frontView;
+    ui.modalTitle.textContent = product.title;
+    ui.modalDescription.textContent = product.description;
+    ui.modalPrice.textContent = `R ${product.priceValue}`;
+    ui.modalImage.src = product.frontView;
 
-    htmlElementRegistry.sizeContainer.innerHTML = context.sizeArray.map((sz, idx) => {
-      const cleanSize = sz.trim();
+    ui.sizeContainer.innerHTML = product.sizes.map((size, idx) => {
+      const cleanSize = size.trim();
       return `<button type="button" class="size-token${idx === 0 ? ' active' : ''}" data-size="${cleanSize}">${cleanSize}</button>`;
     }).join('');
 
-    htmlElementRegistry.sizeContainer.querySelectorAll('.size-token').forEach(btn => {
+    ui.sizeContainer.querySelectorAll('.size-token').forEach(btn => {
       btn.addEventListener('click', () => {
-        htmlElementRegistry.sizeContainer.querySelectorAll('.size-token').forEach(b => b.classList.remove('active'));
+        ui.sizeContainer.querySelectorAll('.size-token').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       });
     });
 
-    htmlElementRegistry.viewOptionsContainer.innerHTML = `
-      <button type="button" class="view-toggle active" data-perspective="front">Front Perspective</button>
-      ${context.backView ? `<button type="button" class="view-toggle" data-perspective="back">Back Axis</button>` : ''}
+    ui.viewOptionsContainer.innerHTML = `
+      <button type="button" class="view-toggle active" data-perspective="front">Front View</button>
+      ${product.backView ? `<button type="button" class="view-toggle" data-perspective="back">Back View</button>` : ''}
     `;
 
-    htmlElementRegistry.viewOptionsContainer.querySelectorAll('.view-toggle').forEach(btn => {
+    ui.viewOptionsContainer.querySelectorAll('.view-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        htmlElementRegistry.viewOptionsContainer.querySelectorAll('.view-toggle').forEach(v => v.classList.remove('active'));
+        ui.viewOptionsContainer.querySelectorAll('.view-toggle').forEach(v => v.classList.remove('active'));
         btn.classList.add('active');
-        htmlElementRegistry.modalImage.src = btn.dataset.perspective === 'back' ? context.backView : context.frontView;
+        ui.modalImage.src = btn.dataset.perspective === 'back' ? product.backView : product.frontView;
       });
     });
 
-    htmlElementRegistry.modal.classList.add('open');
+    ui.modal.classList.add('open');
   }
 
-  function retractCatalogueModal() {
-    htmlElementRegistry.modal.classList.remove('open');
+  function closeProductModal() {
+    ui.modal.classList.remove('open');
   }
 
-  htmlElementRegistry.cards.forEach(card => card.addEventListener('click', () => triggerCatalogueModal(card)));
-  if (htmlElementRegistry.modalClose) htmlElementRegistry.modalClose.addEventListener('click', retractCatalogueModal);
-  if (htmlElementRegistry.modalBackdrop) htmlElementRegistry.modalBackdrop.addEventListener('click', retractCatalogueModal);
+  ui.cards.forEach(card => card.addEventListener('click', () => openProductModal(card)));
+  if (ui.modalClose) ui.modalClose.addEventListener('click', closeProductModal);
+  if (ui.modalBackdrop) ui.modalBackdrop.addEventListener('click', closeProductModal);
 
   /* ==========================================================================
-     6. CURATED SHOPPING BAG MATRIX PROCESSING
+     6. SHOPPING CART SYSTEM
      ========================================================================== */
-  function constructCartCryptographicKey(itemObj) {
-    return `${itemObj.productName}|${itemObj.selectedSize}|${itemObj.selectedColor}`;
+  function createCartId(item) {
+    return `${item.name}|${item.size}|${item.color}`;
   }
 
-  function calculateCartAllocationTotal() {
-    return shoppingBagMatrix.reduce((acc, currentItem) => acc + (currentItem.unitPrice * currentItem.itemQuantity), 0);
+  function getCartTotal() {
+    return shoppingCart.reduce((total, item) => total + (item.price * item.quantity), 0);
   }
 
-  function synchroniseShoppingBagUserInterface() {
-    const aggregateUnitsCount = shoppingBagMatrix.reduce((acc, target) => acc + target.itemQuantity, 0);
-    htmlElementRegistry.cartCounterBadge.textContent = aggregateUnitsCount;
-    htmlElementRegistry.cartSumTotalElement.textContent = `R ${calculateCartAllocationTotal()}`;
+  function updateCartUI() {
+    const totalItems = shoppingCart.reduce((total, item) => total + item.quantity, 0);
+    ui.cartCounterBadge.textContent = totalItems;
+    ui.cartSumTotalElement.textContent = `R ${getCartTotal()}`;
 
-    if (shoppingBagMatrix.length === 0) {
-      htmlElementRegistry.cartItemsContainer.innerHTML = `<p class="cart-empty">Your layout space is empty.</p>`;
+    if (shoppingCart.length === 0) {
+      ui.cartItemsContainer.innerHTML = `<p class="cart-empty">Your shopping bag is empty.</p>`;
       return;
     }
 
-    htmlElementRegistry.cartItemsContainer.innerHTML = shoppingBagMatrix.map(item => {
+    ui.cartItemsContainer.innerHTML = shoppingCart.map(item => {
       return `
         <div class="cart-item">
-          <img src="${item.previewImageCoordinate}" alt="${item.productName}">
+          <img src="${item.image}" alt="${item.name}">
           <div class="cart-item-copy">
-            <p class="cart-item-name">${item.productName}</p>
-            <p class="cart-item-meta">Size Matrix: ${item.selectedSize} · Natural</p>
-            <p class="cart-item-price">R ${item.unitPrice * item.itemQuantity}</p>
+            <p class="cart-item-name">${item.name}</p>
+            <p class="cart-item-meta">Size: ${item.size}</p>
+            <p class="cart-item-price">R ${item.price * item.quantity}</p>
             <div class="cart-item-actions">
-              <button type="button" class="qty-change" data-key="${constructCartCryptographicKey(item)}" data-offset="-1">−</button>
-              <span>${item.itemQuantity}</span>
-              <button type="button" class="qty-change" data-key="${constructCartCryptographicKey(item)}" data-offset="1">+</button>
-              <button type="button" class="cart-remove" data-key="${constructCartCryptographicKey(item)}">Remove</button>
+              <button type="button" class="qty-change" data-id="${createCartId(item)}" data-change="-1">−</button>
+              <span>${item.quantity}</span>
+              <button type="button" class="qty-change" data-id="${createCartId(item)}" data-change="1">+</button>
+              <button type="button" class="cart-remove" data-id="${createCartId(item)}">Remove</button>
             </div>
           </div>
         </div>
       `;
     }).join('');
 
-    htmlElementRegistry.cartItemsContainer.querySelectorAll('.qty-change').forEach(changeBtn => {
-      changeBtn.addEventListener('click', () => {
-        const uniqueKey = changeBtn.dataset.key;
-        const transformDelta = parseInt(changeBtn.dataset.offset, 10);
-        const activeTargetMatch = shoppingBagMatrix.find(i => constructCartCryptographicKey(i) === uniqueKey);
+    ui.cartItemsContainer.querySelectorAll('.qty-change').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const itemId = btn.dataset.id;
+        const changeAmount = parseInt(btn.dataset.change, 10);
+        const cartItem = shoppingCart.find(item => createCartId(item) === itemId);
         
-        if (activeTargetMatch) {
-          activeTargetMatch.itemQuantity += transformDelta;
-          if (activeTargetMatch.itemQuantity <= 0) {
-            shoppingBagMatrix = shoppingBagMatrix.filter(i => constructCartCryptographicKey(i) !== uniqueKey);
+        if (cartItem) {
+          cartItem.quantity += changeAmount;
+          if (cartItem.quantity <= 0) {
+            shoppingCart = shoppingCart.filter(item => createCartId(item) !== itemId);
           }
-          synchroniseShoppingBagUserInterface();
+          updateCartUI();
         }
       });
     });
 
-    htmlElementRegistry.cartItemsContainer.querySelectorAll('.cart-remove').forEach(removeBtn => {
-      removeBtn.addEventListener('click', () => {
-        shoppingBagMatrix = shoppingBagMatrix.filter(i => constructCartCryptographicKey(i) !== removeBtn.dataset.key);
-        synchroniseShoppingBagUserInterface();
+    ui.cartItemsContainer.querySelectorAll('.cart-remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        shoppingCart = shoppingCart.filter(item => createCartId(item) !== btn.dataset.id);
+        updateCartUI();
       });
     });
   }
 
-  htmlElementRegistry.addToBagTrigger.addEventListener('click', () => {
-    dispatchBagInsertionChime();
+  ui.addToBagTrigger.addEventListener('click', () => {
+    playCartSound();
     
-    const sizeActiveSelection = htmlElementRegistry.sizeContainer.querySelector('.size-token.active');
-    const computedSizeValue = sizeActiveSelection ? sizeActiveSelection.dataset.size : 'M';
-    const computedPriceInteger = parseFloat(htmlElementRegistry.modalPrice.textContent.replace(/[^0-9]/g, '')) || 0;
+    const selectedSizeElement = ui.sizeContainer.querySelector('.size-token.active');
+    const chosenSize = selectedSizeElement ? selectedSizeElement.dataset.size : 'M';
+    const numericPrice = parseFloat(ui.modalPrice.textContent.replace(/[^0-9]/g, '')) || 0;
     
-    const blueprintItemPacket = {
-      productName: htmlElementRegistry.modalTitle.textContent,
-      unitPrice: computedPriceInteger,
-      selectedSize: computedSizeValue,
-      selectedColor: activelySelectedProductCard ? (activelySelectedProductCard.dataset.colors || 'Stone').split(',')[0].trim() : 'Core',
-      previewImageCoordinate: htmlElementRegistry.modalImage.src,
-      itemQuantity: 1
+    const newItem = {
+      name: ui.modalTitle.textContent,
+      price: numericPrice,
+      size: chosenSize,
+      color: currentProductCard ? (currentProductCard.dataset.colors || 'Stone').split(',')[0].trim() : 'Core',
+      image: ui.modalImage.src,
+      quantity: 1
     };
 
-    const identicalMatchInstance = shoppingBagMatrix.find(i => constructCartCryptographicKey(i) === constructCartCryptographicKey(blueprintItemPacket));
-    if (identicalMatchInstance) {
-      identicalMatchInstance.itemQuantity += 1;
+    const existingItem = shoppingCart.find(item => createCartId(item) === createCartId(newItem));
+    if (existingItem) {
+      existingItem.quantity += 1;
     } else {
-      shoppingBagMatrix.push(blueprintItemPacket);
+      shoppingCart.push(newItem);
     }
 
-    synchroniseShoppingBagUserInterface();
+    updateCartUI();
     
-    htmlElementRegistry.addToBagTrigger.textContent = 'Piece Secured';
-    setTimeout(() => { htmlElementRegistry.addToBagTrigger.textContent = 'Secure To Bag Layout'; }, 1000);
+    ui.addToBagTrigger.textContent = 'Added!';
+    setTimeout(() => { ui.addToBagTrigger.textContent = 'Add To Shopping Bag'; }, 1000);
   });
 
-  function modifyCartDrawerState(openActionFlag) {
-    htmlElementRegistry.cartDrawer.classList.toggle('open', openActionFlag);
+  function toggleCartDrawer(show) {
+    ui.cartDrawer.classList.toggle('open', show);
   }
 
-  htmlElementRegistry.cartToggle.addEventListener('click', () => modifyCartDrawerState(true));
-  if (htmlElementRegistry.cartClose) htmlElementRegistry.cartClose.addEventListener('click', () => modifyCartDrawerState(false));
-  if (htmlElementRegistry.cartBackdrop) htmlElementRegistry.cartBackdrop.addEventListener('click', () => modifyCartDrawerState(false));
+  ui.cartToggle.addEventListener('click', () => toggleCartDrawer(true));
+  if (ui.cartClose) ui.cartClose.addEventListener('click', () => toggleCartDrawer(false));
+  if (ui.cartBackdrop) ui.cartBackdrop.addEventListener('click', () => toggleCartDrawer(false));
 
   /* ==========================================================================
-     7. WHATSAPP STRATIFIED ORDER CONSTRUCTOR DISPATCH
+     7. SEND ORDER TO WHATSAPP
      ========================================================================== */
-  htmlElementRegistry.checkoutTrigger.addEventListener('click', () => {
-    if (!shoppingBagMatrix.length) {
-      alert("Your order space requires values before transaction routing.");
+  ui.checkoutTrigger.addEventListener('click', () => {
+    if (!shoppingCart.length) {
+      alert("Your shopping bag is empty!");
       return;
     }
 
-    const textualMessageLines = [
-      '⚡ *NEW ORDER TRANSMISSION - MAJITA ARCHIVAL LABS* ⚡',
+    const messageLines = [
+      '⚡ *NEW ORDER - MAJITA STORE* ⚡',
       '________________________________',
       '',
-      ...shoppingBagMatrix.map(item => `• *${item.itemQuantity}x ${item.productName}* \n  Size Variant: ${item.selectedSize} \n  Subtotal: R ${item.unitPrice * item.itemQuantity}`),
+      ...shoppingCart.map(item => `• *${item.quantity}x ${item.name}* \n  Size: ${item.size} \n  Price: R ${item.price * item.quantity}`),
       '________________________________',
-      `*TOTAL:* R ${calculateCartAllocationTotal()}`,
+      `*TOTAL AMOUNT:* R ${getCartTotal()}`,
       '',
-      'Please verify production stock availability parameters.'
+      'Please check if these items are available. Thanks!'
     ];
 
-    const encodedStringCoordinate = encodeURIComponent(textualMessageLines.join('\n'));
-    window.open(`https://wa.me/27111234567?text=${encodedStringCoordinate}`, '_blank');
+    const encodedMessage = encodeURIComponent(messageLines.join('\n'));
+    window.open(`https://wa.me/27111234567?text=${encodedMessage}`, '_blank');
     
-    shoppingBagMatrix = [];
-    synchroniseShoppingBagUserInterface();
-    modifyCartDrawerState(false);
+    shoppingCart = [];
+    updateCartUI();
+    toggleCartDrawer(false);
   });
 
   /* ==========================================================================
-     8. GLOBAL ACCESSIBILITY CONTROLS
+     8. EXTRA ACCESSIBILITY (KEYBOARD ESC KEY & MOBILE MENU)
      ========================================================================== */
-  window.addEventListener('keydown', (eventToken) => {
-    if (eventToken.key === 'Escape') {
-      retractCatalogueModal();
-      modifyCartDrawerState(false);
-      accessAuthGate(false);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProductModal();
+      toggleCartDrawer(false);
+      toggleAuthPopup(false);
     }
   });
 
-  // Mobile navigation drawer toggle interaction
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const navLinksList = document.querySelector('.nav-links');
   if (mobileToggle && navLinksList) {

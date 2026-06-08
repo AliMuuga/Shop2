@@ -276,7 +276,7 @@ body {
 .next-slide { right: 3%; }
 
 /* ==========================================================================
-   5. PREMIUM SYSTEM CATALOGUE DISPLAY GRID (CLEAN SEAMLESS INTEGRATION)
+   5. PREMIUM SYSTEM CATALOGUE DISPLAY GRID
    ========================================================================== */
 .about-us-block, .shop { 
   padding: 8rem 8%; 
@@ -422,7 +422,7 @@ body {
 }
 
 /* ==========================================================================
-   6. PREMIUM MODAL EXPANSION OVERLAY (CURVED INTENTIONAL CORNERS)
+   6. PREMIUM MODAL EXPANSION OVERLAY
    ========================================================================= */
 .product-modal { 
   position: fixed; 
@@ -1210,7 +1210,7 @@ footer {
 }
 
 /* ==========================================================================
-   11. FLUID MOBILE DESIGN LAYOUT ADAPTABILITY (OVERLAP PREVENTION PROTECTION)
+   11. FLUID MOBILE DESIGN LAYOUT ADAPTABILITY
    ========================================================================= */
 @media (max-width: 992px) {
   #main-nav { padding: 1.25rem 6%; }
